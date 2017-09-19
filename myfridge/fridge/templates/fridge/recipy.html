@@ -1,0 +1,7 @@
+<h1>{{ recipy.name }}</h1>
+<ul>
+    {% for ing in ingredients %}
+        <li>{{ ing.product.name }}: {{ ing.amount }}</li>
+    {% endfor %}
+</ul>
+<p>{{ recipy.text }}</p>
