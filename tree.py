@@ -28,18 +28,19 @@ def tree(h):
     turtle.down()
     turtle.back(h)
 
-turtle.speed(0)
+def main():
+    turtle.speed(0)
 
-turtle.up()
-turtle.back(200)
-turtle.left(90)
-turtle.back(200)
-tree(70)
+    turtle.up()
+    turtle.back(200)
+    turtle.left(90)
+    turtle.back(200)
+    tree(70)
 
-turtle.up()
-turtle.right(90)
-turtle.forward(400)
-turtle.left(90)
-tree(70)
+    turtle.up()
+    turtle.right(90)
+    turtle.forward(400)
+    turtle.left(90)
+    tree(70)
 
-input()
+    input()
