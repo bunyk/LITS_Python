@@ -15,6 +15,15 @@ class Recipy(models.Model):
     def __str__(self):
         return self.name
 
+
+class Comment(models.Model):
+    text = models.TextField()
+    publish_date = models.DateTimeField(auto_now_add=True, editable=False)
+    author = models.ForeignKey('auth.User')
+    recipy = models.ForeignKey(Recipy)
+    likes_count = models.IntegerField()
+
+
 class Ingredient(models.Model):
     product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
     recipy = models.ForeignKey(Recipy, on_delete=models.CASCADE)

@@ -1,15 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
+from django.core.exceptions import ObjectDoesNotExist
 
 
-from .models import Recipy, Product
+from .models import Recipy, Product, Comment
 
 def index(request):
-
     recipys = Recipy.objects.all()
 
     return render(request, 'fridge/index.html', {
-        'recipys': recipys
+        'recipys': recipys,
+        'user': request.user,
     })
 
 def products_by_ingredients(ingredients):
@@ -56,8 +57,14 @@ def search_best(request, ingredients):
 
 def recipy(request, recipy_id): 
     recipy = get_object_or_404(Recipy, pk=recipy_id)
-    ingredients = recipy.ingredient_set.all()
+
+    if request.method == 'POST':
+        text = request.POST['comment_text']
+        user = request.user
+
+        comment = Comment(author = user, text = text, recipy = recipy)
+        comment.save()
+
     return render(request, 'fridge/recipy.html', {
-        'recipy': recipy,
-        'ingredients': ingredients,
+        'recipy': recipy
     })

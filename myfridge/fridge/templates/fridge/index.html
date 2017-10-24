@@ -1,4 +1,8 @@
-
+{% if user %}
+Hello, {{ user.username }}!
+{% else %}
+<a href="/login">Login</a>
+{% endif %}
 {% if products %}
     <p>
     Показую рецепти які можна зробити з наступних продуктів:
