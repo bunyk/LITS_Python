@@ -1,0 +1,23 @@
+<h1>{{ recipy.name }}</h1>
+
+<ul>
+    {% for ing in recipy.ingredients_set.all %}
+        <li>{{ ing.product.name }}: {{ ing.amount }}</li>
+    {% endfor %}
+</ul>
+
+<p>{{ recipy.text }}</p>
+
+<hr >
+
+
+{% for comment in recipy.comment_set.all %}
+<p><strong>{{comment.author.username}}</strong> {{ comment.text }}</p>
+{% endfor %}
+
+
+<form action="/recipy/{{recipy.id}}/" method="post">
+    {% csrf_token %}
+    <textarea name="comment_text"></textarea>
+    <input type="submit" value="OK">
+</form>

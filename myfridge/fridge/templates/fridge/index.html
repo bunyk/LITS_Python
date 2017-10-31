@@ -1,0 +1,35 @@
+{% if user %}
+Hello, {{ user.username }}!
+{% else %}
+<a href="/login">Login</a>
+{% endif %}
+{% if products %}
+    <p>
+    Показую рецепти які можна зробити з наступних продуктів:
+    {% for product in products %}
+    {{ product.name }} <a href="/{{product.search_without}}/">[x]</a>{% if not forloop.last %},{% endif %}
+    {% endfor %}
+    </p>
+    <p>
+    Може є ще
+    {% for product in more_products %}
+        {% if forloop.last %} або {% endif %}
+        <a href="/{{product.search_with}}/">{{ product.name }}</a>{% if not forloop.last %},{% endif %}
+    {% endfor %}?
+    </p>
+    <hr />
+{% endif %}
+
+{% if recipys %}
+    <ul>
+    {% for recipy in recipys %}
+        <li><a href="/recipy/{{ recipy.id }}/">{{ recipy.name }}</a>:
+            {% for ing in recipy.ingredient_set.all %} 
+                <a href="/{{ing.product.id}}/">{{ ing.product.name }}</a>{% if not forloop.last %},{% endif %}
+            {% endfor %} 
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Рецептів не знайдено :(</p>
+{% endif %}

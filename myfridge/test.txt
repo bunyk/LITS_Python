@@ -1,0 +1,4 @@
+adsafdsfdsa
+adsafdsfdsa
+adsafdsfdsa
+<class '_io.TextIOWrapper'>

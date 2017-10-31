@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Анекдоти</title>
+    </head>
+<body>
+    {% if user.is_authenticated %}
+        <p> Hello, {{ user.username }} <a href="/admin/logout/">Logout</a></p>
+    {% else %}
+        <a href="/admin/">Login</a>
+    {% endif %}
+    {% for joke in jokes %}
+
+    <p><strong>№{{forloop.counter}}</strong>  {{joke.text}}</p>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Рецепти мого холодильника</title>
+    </head>
+    <body>
+        <h1>Рецепти мого холодильника</h1>
+        {% if not recipys %}
+            <p>На жаль, рецептів не знайдено. Треба додати щось до холодильника.</p>
+        {% endif %}
+        {% for recipy in recipys %}
+            <h2>{{recipy.name}}</h2>
+            <p>recipy.text</p>
+        {% endfor %}
+        <p>Будуть тутечка.</p>
+    </body>
+</html>
